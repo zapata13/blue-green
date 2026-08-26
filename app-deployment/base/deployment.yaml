@@ -1,0 +1,37 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: app
+  labels:
+    app: green-app
+    app.kubernetes.io/component: green-app
+    app.kubernetes.io/instance: green-app
+    app.kubernetes.io/name: green-app
+    app.kubernetes.io/part-of: blue-green-app
+    app.openshift.io/runtime-icon: quarkus
+    app.openshift.io/runtime-namespace: bg-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: green-app
+  template:
+    metadata:
+      labels:
+        app: green-app
+    spec:
+      containers:
+        - name: green-app
+          image: 'quay.io/devnations-ceaca/blue-green:720b3f22-61f9-47cc-884b-758cb21e8870'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP
+          env:
+            - name: SHAPE_TYPE
+              value: circle
+            - name: SHAPE_COLOR
+              value: '#0B6623'
+          resources: {}
+
