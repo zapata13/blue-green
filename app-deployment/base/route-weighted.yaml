@@ -9,11 +9,11 @@ spec:
   to:
     kind: Service
     name: blue-service
-    weight: 50
+    weight: 100
   alternateBackends:
     - kind: Service
       name: green-service
-      weight: 50
+      weight: 0
   port:
     targetPort: 8080-tcp
   tls:
