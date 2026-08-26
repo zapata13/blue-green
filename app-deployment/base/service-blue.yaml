@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: service
+  name: blue-service
 spec:
   ports:
     - name: 8080-tcp
@@ -9,4 +9,4 @@ spec:
       port: 80
       targetPort: 8080
   selector:
-    app: green-app
+    app: blue-app

@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: bg-route
+spec:
+  to:
+    kind: Service
+    name: bg-service
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

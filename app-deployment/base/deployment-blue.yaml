@@ -1,24 +1,23 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: app
+  name: blue-app
   labels:
-    app: green-app
-    app.kubernetes.io/component: green-app
-    app.kubernetes.io/instance: green-app
-    app.kubernetes.io/name: green-app
+    app: blue-app
+    app.kubernetes.io/component: blue-app
+    app.kubernetes.io/instance: blue-app
+    app.kubernetes.io/name: blue-app
     app.kubernetes.io/part-of: blue-green-app
     app.openshift.io/runtime-icon: quarkus
-    app.openshift.io/runtime-namespace: bg-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: green-app
+      app: blue-app
   template:
     metadata:
       labels:
-        app: green-app
+        app: blue-app
     spec:
       containers:
         - name: green-app
@@ -30,8 +29,8 @@ spec:
               protocol: TCP
           env:
             - name: SHAPE_TYPE
-              value: circle
+              value: square
             - name: SHAPE_COLOR
-              value: '#0B6623'
+              value: '#000080'
           resources: {}
 
